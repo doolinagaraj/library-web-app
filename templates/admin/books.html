@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>All Books</h3>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for book in books %}
+    <tr>
+        <td>{{ book.id }}</td>
+        <td>{{ book.title }}</td>
+        <td>{{ book.author }}</td>
+        <td>
+            {% if book.available == 1 %}
+                Available
+            {% else %}
+                Issued
+            {% endif %}
+        </td>
+        <td>
+            <a href="/admin/books/edit/{{ book.id }}">Edit</a> |
+            <a href="/admin/books/delete/{{ book.id }}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
