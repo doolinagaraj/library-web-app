@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>Available Books</h3>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Action</th>
+    </tr>
+
+    {% for book in books %}
+    <tr>
+        <td>{{ book.id }}</td>
+        <td>{{ book.title }}</td>
+        <td>{{ book.author }}</td>
+        <td>
+            <a href="/member/borrow/{{ book.id }}">Borrow</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

@@ -1,0 +1,95 @@
+/* General page styling */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Headings */
+h2, h3 {
+    color: #333;
+}
+
+/* Navigation */
+nav {
+    margin-bottom: 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #0066cc;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Flash messages */
+.msg {
+    color: #b00020;
+    font-weight: bold;
+}
+
+/* Forms */
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    width: 320px;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+label {
+    font-weight: bold;
+}
+
+input, select, button {
+    width: 100%;
+    padding: 8px;
+    margin-top: 6px;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #004999;
+}
+
+/* Tables */
+table {
+    background-color: white;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 15px;
+}
+
+th {
+    background-color: #eeeeee;
+}
+
+th, td {
+    border: 1px solid #cccccc;
+    padding: 10px;
+    text-align: left;
+}
+
+/* Links inside tables */
+table a {
+    color: #0066cc;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+table a:hover {
+    text-decoration: underline;
+}
