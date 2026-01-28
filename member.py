@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, redirect, flash
-from flask_jwt_extended import jwt_required, get_jwt
+from flask_jwt_extended import jwt_required, get_jwt, get_jwt_identity
 from database import get_db
 
 member_bp = Blueprint("member", __name__, url_prefix="/member")
@@ -37,7 +37,7 @@ def borrow(book_id):
     if not member_only():
         return redirect("/login")
 
-    user = get_jwt_identity()
+    user_id = int(get_jwt_identity())
     db = get_db()
 
     book = db.execute(
@@ -49,7 +49,7 @@ def borrow(book_id):
 
     db.execute(
         "INSERT INTO borrowed_books (user_id, book_id) VALUES (?, ?)",
-        (user["id"], book_id),
+        (user_id, book_id),
     )
     db.execute("UPDATE books SET available=0 WHERE id=?", (book_id,))
     db.commit()
@@ -63,12 +63,12 @@ def return_book(book_id):
     if not member_only():
         return redirect("/login")
 
-    user = get_jwt_identity()
+    user_id = int(get_jwt_identity())
     db = get_db()
 
     db.execute(
         "DELETE FROM borrowed_books WHERE user_id=? AND book_id=?",
-        (user["id"], book_id),
+        (user_id, book_id),
     )
     db.execute("UPDATE books SET available=1 WHERE id=?", (book_id,))
     db.commit()
