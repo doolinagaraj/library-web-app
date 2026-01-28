@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+</head>
+<body>
+
+<h2>User Registration</h2>
+
+<form method="POST">
+    <label>Username:</label><br>
+    <input type="text" name="username" required><br><br>
+
+    <label>Password:</label><br>
+    <input type="password" name="password" required><br><br>
+
+    <label>Role:</label><br>
+    <select name="role" required>
+        <option value="member">Member</option>
+        <option value="admin">Admin</option>
+    </select><br><br>
+
+    <button type="submit">Register</button>
+</form>
+
+<p>
+    Already registered? <a href="/login">Login</a>
+</p>
+
+{% with messages = get_flashed_messages() %}
+  {% for msg in messages %}
+    <p style="color:red">{{ msg }}</p>
+  {% endfor %}
+{% endwith %}
+
+</body>
+</html>
